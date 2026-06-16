@@ -2,16 +2,15 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { siteContent } from "@/data/siteContent";
 
-const lines = [
-  "Every great leader has a journey.",
-  "WIKASATRIAN",
-  "Leadership begins with a journey.",
-];
+const { opening } = siteContent;
+const lines = opening.lines as readonly string[];
 
 export default function Opening({ onEnter }: { onEnter: () => void }) {
   const [step, setStep] = useState(0);
   const [closing, setClosing] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const handleNext = () => {
     if (step < lines.length - 1) {
@@ -32,6 +31,18 @@ export default function Opening({ onEnter }: { onEnter: () => void }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
+          {/* Optional real photo background */}
+          {!imgError && (
+            <img
+              src={opening.backgroundImage}
+              alt=""
+              aria-hidden="true"
+              onError={() => setImgError(true)}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ filter: "brightness(0.18) saturate(0.5)" }}
+            />
+          )}
+
           {/* drifting fog layers */}
           <motion.div
             className="absolute inset-0 batik-pattern opacity-40"
@@ -87,7 +98,7 @@ export default function Opening({ onEnter }: { onEnter: () => void }) {
                     whileHover={{ scale: 1.05 }}
                     className="mt-6 rounded-full border border-gold px-10 py-4 text-xs md:text-sm uppercase tracking-[0.35em] text-gold hover:bg-gold hover:text-ink transition-colors duration-500"
                   >
-                    Enter Experience
+                    {opening.cta}
                   </motion.button>
                 </motion.div>
               )}

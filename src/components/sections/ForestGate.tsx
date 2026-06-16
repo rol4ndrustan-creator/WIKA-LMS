@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 import MountainRange from "@/components/decorations/MountainRange";
 import Gunungan from "@/components/decorations/Gunungan";
+import { siteContent } from "@/data/siteContent";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
@@ -12,6 +13,7 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 
 export default function ForestGate() {
   const ref = useRef<HTMLDivElement>(null);
+  const [imgError, setImgError] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -21,6 +23,9 @@ export default function ForestGate() {
   const titleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const mountainsY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const fogY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
+  const { hero } = siteContent;
 
   return (
     <section
@@ -29,6 +34,22 @@ export default function ForestGate() {
       className="relative h-[140vh] w-full overflow-hidden bg-gradient-to-b from-[#11140f] via-bark to-ink"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Real photo background layer — shown when image loads */}
+        {!imgError && (
+          <motion.div style={{ y: imgY }} className="absolute inset-0 w-full h-[110%]">
+            <img
+              src={hero.backgroundImage}
+              alt="Forest path leading to Wikasatrian"
+              onError={() => setImgError(true)}
+              className="w-full h-full object-cover object-center"
+              style={{ filter: "brightness(0.35) saturate(0.7)" }}
+            />
+            {/* Dark green forest overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#003B13]/60 via-[#0b0b0a]/30 to-[#0b0b0a]/90" />
+          </motion.div>
+        )}
+
+        {/* 3D sparkles layer on top */}
         <HeroScene />
 
         <motion.div
