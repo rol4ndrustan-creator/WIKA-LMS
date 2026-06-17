@@ -106,3 +106,10 @@ h1, h2, h3, h4, .font-display {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* Custom gold focus ring for the room explorer (overrides default blue outline) */
+.room-explorer :focus-visible {
+  outline: 2px solid rgba(201, 164, 92, 0.8);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(201, 164, 92, 0.18);
+}

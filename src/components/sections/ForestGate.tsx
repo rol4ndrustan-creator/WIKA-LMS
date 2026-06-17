@@ -31,7 +31,7 @@ export default function ForestGate() {
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <Image
-          src="/images/wikasatrian/hero-forest.jpg"
+          src="/images/hero-forest.jpg"
           alt="Wikasatrian forest landscape"
           fill
           priority

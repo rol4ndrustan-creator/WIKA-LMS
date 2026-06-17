@@ -11,7 +11,7 @@ export default function VirtualTour() {
   return (
     <section id="virtual-tour" className="relative h-[70vh] min-h-[500px] w-full overflow-hidden">
       <Image
-        src="/images/wikasatrian/tour-360.jpg"
+        src="/images/tour-360.jpg"
         alt="Wikasatrian virtual tour"
         fill
         className="object-cover"

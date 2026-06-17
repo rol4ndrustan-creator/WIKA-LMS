@@ -62,7 +62,7 @@ export default function ProgramPackages() {
   return (
     <section id="programs" className="relative py-28 md:py-36 px-6 overflow-hidden">
       <Image
-        src="/images/wikasatrian/packages-bg.jpg"
+        src="/images/packages-bg.jpg"
         alt=""
         fill
         className="object-cover"

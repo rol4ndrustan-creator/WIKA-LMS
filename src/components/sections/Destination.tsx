@@ -7,7 +7,7 @@ export default function Destination() {
   return (
     <section id="destination" className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
       <Image
-        src="/images/wikasatrian/building.jpg"
+        src="/images/building.jpg"
         alt="Wikasatrian building"
         fill
         className="object-cover"

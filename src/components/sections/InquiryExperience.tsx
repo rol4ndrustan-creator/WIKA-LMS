@@ -138,7 +138,7 @@ export default function InquiryExperience() {
       className="relative py-28 md:py-36 px-6 overflow-hidden"
     >
       <Image
-        src="/images/wikasatrian/contact-bg.jpg"
+        src="/images/contact-bg.jpg"
         alt=""
         fill
         className="object-cover"
