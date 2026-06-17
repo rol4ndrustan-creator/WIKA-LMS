@@ -9,12 +9,14 @@ import Opening from "@/components/sections/Opening";
 import ForestGate from "@/components/sections/ForestGate";
 import PhilosophyJourney from "@/components/sections/PhilosophyJourney";
 import Pendopo from "@/components/sections/Pendopo";
+import Facilities from "@/components/sections/Facilities";
 import LeadershipDevelopment from "@/components/sections/LeadershipDevelopment";
 import CorporateAcademy from "@/components/sections/CorporateAcademy";
 import ExecutiveRetreat from "@/components/sections/ExecutiveRetreat";
 import CorporateConsulting from "@/components/sections/CorporateConsulting";
 import AssessmentCenter from "@/components/sections/AssessmentCenter";
 import InnovationCenter from "@/components/sections/InnovationCenter";
+import ProgramPackages from "@/components/sections/ProgramPackages";
 import SuccessStories from "@/components/sections/SuccessStories";
 import WhyWikasatrian from "@/components/sections/WhyWikasatrian";
 import ImagineSection from "@/components/sections/ImagineSection";
@@ -38,12 +40,14 @@ export default function Home() {
       <ForestGate />
       <PhilosophyJourney />
       <Pendopo />
+      <Facilities />
       <LeadershipDevelopment />
       <CorporateAcademy />
       <ExecutiveRetreat />
       <CorporateConsulting />
       <AssessmentCenter />
       <InnovationCenter />
+      <ProgramPackages />
       <SuccessStories />
       <WhyWikasatrian />
       <ImagineSection />
