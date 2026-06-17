@@ -99,3 +99,10 @@ h1, h2, h3, h4, .font-display {
 .glow-gold {
   box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
 }
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

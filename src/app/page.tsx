@@ -7,9 +7,12 @@ import JourneyNav from "@/components/JourneyNav";
 import Footer from "@/components/Footer";
 import Opening from "@/components/sections/Opening";
 import ForestGate from "@/components/sections/ForestGate";
+import Destination from "@/components/sections/Destination";
 import PhilosophyJourney from "@/components/sections/PhilosophyJourney";
+import PhilosophyValues from "@/components/sections/PhilosophyValues";
 import Pendopo from "@/components/sections/Pendopo";
 import Facilities from "@/components/sections/Facilities";
+import VirtualTour from "@/components/sections/VirtualTour";
 import LeadershipDevelopment from "@/components/sections/LeadershipDevelopment";
 import CorporateAcademy from "@/components/sections/CorporateAcademy";
 import ExecutiveRetreat from "@/components/sections/ExecutiveRetreat";
@@ -38,9 +41,12 @@ export default function Home() {
       )}
 
       <ForestGate />
+      <Destination />
       <PhilosophyJourney />
+      <PhilosophyValues />
       <Pendopo />
       <Facilities />
+      <VirtualTour />
       <LeadershipDevelopment />
       <CorporateAcademy />
       <ExecutiveRetreat />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Gunungan from "@/components/decorations/Gunungan";
 
 type FormData = {
@@ -12,8 +13,10 @@ type FormData = {
   timeline: string;
   expectation: string;
   contactName: string;
+  jobTitle: string;
   phone: string;
   email: string;
+  packageInterest: string;
 };
 
 const initialData: FormData = {
@@ -24,9 +27,20 @@ const initialData: FormData = {
   timeline: "",
   expectation: "",
   contactName: "",
+  jobTitle: "",
   phone: "",
   email: "",
+  packageInterest: "",
 };
+
+const packageOptions = [
+  "Essential Journey",
+  "Collaborative Learning",
+  "Leadership Development",
+  "Camp Experience",
+  "Transformation Journey",
+  "Belum Menentukan",
+];
 
 const industries = [
   "Government",
@@ -90,7 +104,8 @@ export default function InquiryExperience() {
         return (
           data.contactName.trim().length > 1 &&
           data.phone.trim().length > 5 &&
-          data.email.includes("@")
+          data.email.includes("@") &&
+          data.packageInterest !== ""
         );
       default:
         return true;
@@ -120,9 +135,17 @@ export default function InquiryExperience() {
   return (
     <section
       id="inquiry"
-      className="relative bg-gradient-to-b from-ink via-bark/40 to-ink py-28 md:py-36 px-6 overflow-hidden"
+      className="relative py-28 md:py-36 px-6 overflow-hidden"
     >
-      <Gunungan className="absolute right-0 bottom-0 h-[50vh] text-bronze/5" />
+      <Image
+        src="/images/wikasatrian/contact-bg.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(11,11,10,0.94)] via-[rgba(11,11,10,0.9)] to-[rgba(11,11,10,0.96)]" />
+      <Gunungan className="absolute right-0 bottom-0 h-[50vh] text-bronze/5 z-[1]" />
       <div className="relative z-10 max-w-2xl mx-auto">
         {step < totalSteps - 1 && (
           <div className="mb-12">
@@ -253,13 +276,19 @@ export default function InquiryExperience() {
             <Step key="6">
               <Heading title="How can we reach you?" />
               <Field
-                label="Contact Person"
+                label="Nama Lengkap"
                 value={data.contactName}
                 onChange={(v) => update("contactName", v)}
                 placeholder="Full Name"
               />
               <Field
-                label="Phone / WhatsApp"
+                label="Jabatan"
+                value={data.jobTitle}
+                onChange={(v) => update("jobTitle", v)}
+                placeholder="e.g. HR Director"
+              />
+              <Field
+                label="Nomor Telepon / WhatsApp"
                 value={data.phone}
                 onChange={(v) => update("phone", v)}
                 placeholder="+62..."
@@ -271,6 +300,17 @@ export default function InquiryExperience() {
                 placeholder="name@company.com"
                 type="email"
               />
+              <Label>Paket yang Diminati</Label>
+              <div className="grid grid-cols-2 gap-3 mt-2 mb-8">
+                {packageOptions.map((pkg) => (
+                  <OptionPill
+                    key={pkg}
+                    label={pkg}
+                    selected={data.packageInterest === pkg}
+                    onClick={() => update("packageInterest", pkg)}
+                  />
+                ))}
+              </div>
               <Nav onBack={back} onNext={next} disabled={!canProceed()} />
             </Step>
           )}
@@ -288,7 +328,8 @@ export default function InquiryExperience() {
                     <SummaryRow label="Company Size" value={data.companySize} />
                     <SummaryRow label="Challenges" value={data.challenges.join(", ")} />
                     <SummaryRow label="Timeline" value={data.timeline} />
-                    <SummaryRow label="Contact" value={`${data.contactName} · ${data.phone} · ${data.email}`} />
+                    <SummaryRow label="Paket Diminati" value={data.packageInterest} />
+                    <SummaryRow label="Contact" value={`${data.contactName} (${data.jobTitle}) · ${data.phone} · ${data.email}`} />
                   </div>
                   {error && <p className="text-sm text-red-400 mb-4">{error}</p>}
                   <div className="flex items-center gap-4">

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import MountainRange from "@/components/decorations/MountainRange";
 import Gunungan from "@/components/decorations/Gunungan";
 
@@ -29,6 +30,14 @@ export default function ForestGate() {
       className="relative h-[140vh] w-full overflow-hidden bg-gradient-to-b from-[#11140f] via-bark to-ink"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <Image
+          src="/images/wikasatrian/hero-forest.jpg"
+          alt="Wikasatrian forest landscape"
+          fill
+          priority
+          className="object-cover opacity-50"
+          sizes="100vw"
+        />
         <HeroScene />
 
         <motion.div
@@ -56,10 +65,20 @@ export default function ForestGate() {
             distant birds, and a path of stone lead you toward the Pendopo —
             the heart of leadership.
           </p>
+          <motion.a
+            href="#facilities"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="mt-12 inline-flex items-center gap-3 rounded-full bg-gold/90 text-ink border border-gold px-9 py-4 text-xs md:text-sm uppercase tracking-[0.25em] hover:bg-gold hover:shadow-[0_0_40px_rgba(212,175,55,0.45)] transition-all duration-500"
+          >
+            Jelajahi Wikasatrian
+            <span aria-hidden="true">→</span>
+          </motion.a>
+
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            className="mt-16 flex flex-col items-center gap-2 text-fog/60"
+            className="mt-10 flex flex-col items-center gap-2 text-fog/60"
           >
             <span className="text-[10px] uppercase tracking-[0.35em]">Scroll to walk</span>
             <span className="h-8 w-px bg-bronze/60" />
